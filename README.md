@@ -12,7 +12,7 @@ The dataset was loaded into Python using the **pandas** library. The relevant UK
 ## 4. Key Findings
 A clear negative relationship was observed between wind generation and electricity price. The scatter plot below demonstrates that periods of high wind generation significantly reduce price volatility and suppress high price spikes.
 
-While the linear correlation coefficient was low at **-0.086**, this is because the relationship is not strictly linear. The visual evidence clearly shows the bearish (price-lowering) impact of high renewable generation on the wholesale market.
+While the linear correlation coefficient was low at **-0.086**, this is because the relationship is not strictly linear. The visual evidence clearly shows the bearish (price lowering) impact of high renewable generation on the wholesale market.
 
 ![UK Power Price vs Wind Generation](plot.png)
 
