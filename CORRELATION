@@ -1,0 +1,41 @@
+import pandas as pd
+
+
+df_all = pd.read_csv("/mnt/c/games/time_series_60min_singleindex.csv")
+
+
+df_uk = df_all[['utc_timestamp', 'GB_GBN_price_day_ahead', 'GB_GBN_wind_generation_actual']].copy()
+
+
+df_uk.rename(columns={
+    'utc_timestamp': 'timestamp',
+    'GB_GBN_price_day_ahead': 'price',
+    'GB_GBN_wind_generation_actual': 'wind_generation'
+}, inplace=True)
+
+
+df_uk['timestamp'] = pd.to_datetime(df_uk['timestamp'])
+
+df_uk.dropna(inplace=True)
+
+print(df_uk.head())
+
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+print("\n creating plot... ")
+
+sns.set_theme(style="darkgrid")
+
+
+plt.figure(figsize=(14, 7))
+sns.scatterplot(data=df_uk, x ='wind_generation', y='price', alpha=0.3)
+plt.title('UK Electricity Price vs Wind Generation (2015-2020)', fontsize=16)
+plt.xlabel('Hourly Wind Generation (MW)', fontsize=12)
+plt.ylabel('Day-Ahead Price (£/MWh)', fontsize=12)
+
+
+correlation = df_uk['wind_generation'].corr(df_uk['price'])
+
+print(f"The correlation between wind generation and price is: {correlation:.4f}")
