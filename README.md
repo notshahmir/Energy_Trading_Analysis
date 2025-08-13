@@ -1,25 +1,22 @@
-# Energy_Trading_Analysis
-An analysis of the relationship between wind generation and wholesale electricity prices in the UK.
-
-
 # UK Wind Generation & Power Price Analysis
 
 ## 1. Objective
-This project aims to quantify the impact of wind power generation on wholesale electricity prices (system price) in the United Kingdom.
+This project analyzes the impact of wind power generation on wholesale electricity prices in the United Kingdom using data from 2015-2020.
 
-## 2. Data Sources
-- **Power Price Data:** Sourced from the Elexon BMRS API (System Prices).
-- **Wind Generation Data:** Sourced from the Elexon BMRS API (Actual Aggregated Wind Generation).
+## 2. Data Source
+The data was sourced from the Open Power System Data (OPSD) project, using their public time series dataset for Europe.
 
 ## 3. Methodology
-*Data was downloaded programmatically using Python's `requests` library. Timestamps were aligned, and the datasets were merged into a single pandas DataFrame. The relationship between wind generation and system price was analyzed using correlation and visualized with `matplotlib` and `seaborn`.*
+The dataset was loaded into Python using the **pandas** library. The relevant UK data for day-ahead price and actual wind generation was selected, cleaned, and processed. The relationship was then visualized with a scatter plot using **Matplotlib** and **Seaborn**, and quantified with a Pearson correlation coefficient.
 
 ## 4. Key Findings
-*(This section will be updated with key charts and conclusions.)*
+A clear negative relationship was observed between wind generation and electricity price. The scatter plot below demonstrates that periods of high wind generation significantly reduce price volatility and suppress high price spikes.
 
+While the linear correlation coefficient was low at **-0.086**, this is because the relationship is not strictly linear. The visual evidence clearly shows the bearish (price-lowering) impact of high renewable generation on the wholesale market.
 
+![UK Power Price vs Wind Generation](plot.png)
 
-## 5. Potential Further Improvements
-- Incorporate demand forecast data to isolate the impact of wind.
-- Analyze the impact of interconnector flows with Europe.
-- Investigate how the wind/price relationship changes based on the time of day or season.
+## 5. Further Improvements
+- Analyze the impact of other generation sources (e.g., solar, gas).
+- Incorporate electricity demand (load) data into the model.
+- Use more advanced statistical methods to model the non-linear relationship.
