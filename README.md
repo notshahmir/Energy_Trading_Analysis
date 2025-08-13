@@ -1,22 +1,28 @@
 # UK Wind Generation & Power Price Analysis
 
 ## 1. Objective
-This project analyzes the impact of wind power generation on wholesale electricity prices in the United Kingdom using data from 2015-2020.
+This project analyses the impact of renewable power generation on wholesale electricity prices in the United Kingdom, using hourly data from 2015 to 2020.
 
 ## 2. Data Source
 The data was sourced from the Open Power System Data (OPSD) project, using their public time series dataset for Europe.
 
 ## 3. Methodology
-The dataset was loaded into Python using the **pandas** library. The relevant UK data for day-ahead price and actual wind generation was selected, cleaned, and processed. The relationship was then visualized with a scatter plot using **Matplotlib** and **Seaborn**, and quantified with a Pearson correlation coefficient.
+The dataset was loaded and manipulated in Python using the **pandas** library. Key data points for Great Britain, including the day ahead price, actual load, and generation from wind and solar, were selected and cleaned.
+
+To analyse the market impact, a **'renewable penetration'** metric was engineered by calculating the proportion of total demand (load) met by combined wind and solar generation each hour. These hours were then categorised into 'Low', 'Medium', and 'High' penetration levels. The relationship was visualised using **Matplotlib** and **Seaborn** to create box plots and scatter plots.
 
 ## 4. Key Findings
-A clear negative relationship was observed between wind generation and electricity price. The scatter plot below demonstrates that periods of high wind generation significantly reduce price volatility and suppress high price spikes.
+The project's main finding is a clear and strong relationship between the level of renewable penetration and electricity price behaviour. As the share of demand met by renewables increases, both the average price and price volatility fall dramatically.
 
-While the linear correlation coefficient was low at **-0.086**, this is because the relationship is not strictly linear. The visual evidence clearly shows the bearish (price lowering) impact of high renewable generation on the wholesale market.
+The box plot below illustrates this perfectly. In hours with **high renewable penetration**, the median price is significantly lower and extreme price spikes are almost completely eliminated. In contrast, hours with **low renewable penetration** show much higher volatility and are responsible for all the extreme high price events.
+
+![Renewable Penetration vs Price](penetration_level_vs_price.png)
+
+Further analysis of just wind generation in the scatter plot below supports this conclusion. It shows that high wind output constrains prices to a low, stable band, confirming the bearish (price lowering) impact of renewable generation on the wholesale market.
 
 ![UK Power Price vs Wind Generation](plot.png)
 
 ## 5. Further Improvements
-- Analyze the impact of other generation sources (e.g., solar, gas).
-- Incorporate electricity demand (load) data into the model.
-- Use more advanced statistical methods to model the non-linear relationship.
+* Analyse the impact of other generation sources, for example gas and nuclear.
+* Incorporate electricity demand forecast data to analyse forecast errors.
+* Use more advanced statistical methods to model the non linear relationship.
